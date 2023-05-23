@@ -1,37 +1,52 @@
 const { ObjectId } = require("mongodb/lib/bson");
 const mongodb = require("../db/connect");
+const dotenv = require("dotenv");
+dotenv.config();
+API_KEY = process.env.API_KEY;
 
 const getData = async (req, res, next) => {
-  const result = await mongodb
-    .getDb()
-    .db("elements")
-    .collection("elements")
-    .find();
-  result.toArray().then((lists) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(lists); // we just need the first one (the only one)
-  });
+  if (req.headers.authorization == API_KEY) {
+    const result = await mongodb
+      .getDb()
+      .db("elements")
+      .collection("elements")
+      .find();
+    result.toArray().then((lists) => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(lists); // we just need the first one (the only one)
+    });
+  } else {
+    res.status(500).json({ message: "Invalid API key" });
+  }
 };
 
-const getUser = async (req, res, next) => {
-  const result = await mongodb
-    .getDb()
-    .db("user")
-    .collection("contacts")
-    .findOne({ _id: new ObjectId(req.params.userId) })
-    .then((account) => {
-      if (account == null) {
-        console.log("Account not found err");
-        res.status(500).json({ message: "An error ocured" });
-      } else {
-        res.setHeader("Content-Type", "application/json");
-        res.status(200).json(account);
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ message: "An error ocured" });
-    });
+const getElement = async (req, res, next) => {
+  if (req.headers.authorization == API_KEY) {
+    if (typeof req.params.name == "string" && req.params.name != "") {
+      const result = await mongodb
+        .getDb()
+        .db("elements")
+        .collection("elements")
+        .findOne({ name: req.params.name })
+        .then((element) => {
+          if (element == null) {
+            console.log("Account not found err");
+            res.status(500).json({ message: "An error ocured" });
+          } else {
+            res.setHeader("Content-Type", "application/json");
+            res.status(200).json(account);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ message: "An error ocured" });
+        });
+    } else {
+      res.status(500).json({ message: "Invalid name" });
+    }
+  } else {
+    res.status(500).json({ message: "Invalid API key" });
+  }
 };
 
 const postElement = async (req, res, next) => {
@@ -125,7 +140,7 @@ const putUser = async (req, res, next) => {
   }
 };
 
-const deleteUser = async (req, res, next) => {
+const deleteElement = async (req, res, next) => {
   try {
     const result = await mongodb
       .getDb()
@@ -142,4 +157,4 @@ const deleteUser = async (req, res, next) => {
   }
 };
 
-module.exports = { getData, getUser, postUser, putUser, deleteUser };
+module.exports = { getData, getElement, postElement, putUser, deleteElement };
