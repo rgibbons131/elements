@@ -2,6 +2,7 @@ var express = require("express");
 const dotenv = require("dotenv");
 const MongoClient = require("mongodb").MongoClient;
 const mongodb = require("./db/connect");
+const elements = require("./routes/elements.js");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
