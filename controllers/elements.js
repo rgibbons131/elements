@@ -49,9 +49,7 @@ const postElement = async (req, res, next) => {
       typeof req.body.atomicWeight == "number" &&
       req.body.atomicWeight >= 0.0 &&
       typeof req.body.meltingPoint == "number" &&
-      req.body.meltingPoint >= 0.0 &&
       typeof req.body.boilingPoint == "number" &&
-      req.body.boilingPoint >= 0.0 &&
       typeof req.body.magnetic == "boolean" &&
       typeof req.body.color == "string" &&
       req.body.color != "" &&
@@ -94,9 +92,7 @@ const putElement = async (req, res, next) => {
       typeof req.body.atomicWeight == "number" &&
       req.body.atomicWeight >= 0.0 &&
       typeof req.body.meltingPoint == "number" &&
-      req.body.meltingPoint >= 0.0 &&
       typeof req.body.boilingPoint == "number" &&
-      req.body.boilingPoint >= 0.0 &&
       typeof req.body.magnetic == "boolean" &&
       typeof req.body.color == "string" &&
       req.body.color != "" &&
