@@ -8,12 +8,14 @@ const router = express.Router();
 
 // router.get("/user/:name", professionalController.getUser);       DONE
 // router.post("/user", professionalController.postUser);               DONE
-// router.put("/user/:userId", professionalController.putUser);
+// router.put("/user/:userId", professionalController.putUser);         DONE
 // router.delete("/user/:userId", professionalController.deleteUser);
 
-router.get("/user/:name", professionalController.getElement);
-router.get("/all", professionalController.getData);
-router.post("/element", professionalController.postElement);
+router.get("/elements/:name", professionalController.getElement);
+router.get("/elements", professionalController.getData);
+router.post("/elements", professionalController.postElement);
+router.put("/elements/:name", professionalController.putElement);
+router.delete("/elements/:name", professionalController.deleteElement);
 
 router.get("");
 module.exports = router;

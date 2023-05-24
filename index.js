@@ -21,7 +21,7 @@ app
     next();
   })
   .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-  .use("/", users);
+  .use("/", elements);
 
 mongodb.initDb((err, mongodb) => {
   if (err) {

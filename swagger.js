@@ -7,6 +7,7 @@ const doc = {
   },
   host: "localhost:8080",
   schemes: ["http", "https"],
+  security: [{ bearerAuth: [] }],
 };
 
 const outputFile = "./swagger.json";
