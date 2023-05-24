@@ -5,8 +5,8 @@ const doc = {
     title: "My API",
     description: "Description",
   },
-  host: "localhost:8080",
-  schemes: ["http", "https"],
+  host: "elements-richard.onrender.com",
+  schemes: ["https"],
   security: [{ bearerAuth: [] }],
 };
 
