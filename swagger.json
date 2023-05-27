@@ -50,16 +50,16 @@
                   "example": "any"
                 },
                 "atomicWeight": {
-                  "example": "any"
+                  "example": 15
                 },
                 "meltingPoint": {
-                  "example": "any"
+                  "example": 15
                 },
                 "boilingPoint": {
-                  "example": "any"
+                  "example": 15
                 },
                 "magnetic": {
-                  "example": "any"
+                  "example": false
                 },
                 "color": {
                   "example": "any"
@@ -68,7 +68,7 @@
                   "example": "any"
                 },
                 "conductivity": {
-                  "example": "any"
+                  "example": false
                 }
               }
             }
@@ -135,16 +135,16 @@
                   "example": "any"
                 },
                 "atomicWeight": {
-                  "example": "any"
+                  "example": 15
                 },
                 "meltingPoint": {
-                  "example": "any"
+                  "example": 15
                 },
                 "boilingPoint": {
-                  "example": "any"
+                  "example": 15
                 },
                 "magnetic": {
-                  "example": "any"
+                  "example": false
                 },
                 "color": {
                   "example": "any"
@@ -153,7 +153,7 @@
                   "example": "any"
                 },
                 "conductivity": {
-                  "example": "any"
+                  "example": false
                 }
               }
             }
