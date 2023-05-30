@@ -1,4 +1,5 @@
 const express = require("express");
+const { auth, requiresAuth } = require("express-openid-connect");
 
 const professionalController = require("../controllers/elements.js");
 
@@ -13,9 +14,19 @@ const router = express.Router();
 
 router.get("/elements/:name", professionalController.getElement);
 router.get("/elements", professionalController.getData);
-router.post("/elements", professionalController.postElement);
-router.put("/elements/:name", professionalController.putElement);
-router.delete("/elements/:name", professionalController.deleteElement);
+router.post("/elements", requiresAuth(), professionalController.postElement);
+router.put(
+  "/elements/:name",
+  requiresAuth(),
+  professionalController.putElement
+);
+router.delete(
+  "/elements/:name",
+  requiresAuth(),
+  professionalController.deleteElement
+);
 
-router.get("");
+router.get("/", (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+});
 module.exports = router;
