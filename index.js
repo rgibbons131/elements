@@ -12,7 +12,7 @@ const { auth } = require("express-openid-connect");
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret: dotenv.secret,
+  secret: process.env.SECRET,
   baseURL: "https://elements-richard.onrender.com",
   clientID: "DciNcQ4tiRf3MyaFzGCd94yuWOIv4BOu",
   issuerBaseURL: "https://dev-c05tuxzqaokwihrb.us.auth0.com",
